@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  background: #000000;
+  color: white;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(210, 105, 30, 0.35);
+  color: white;
+}
+
+.nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1.5px;
+  background: #d2691e;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: white;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.luxury-button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow 0.35s ease,
+    transform 0.3s ease,
+    letter-spacing 0.3s ease,
+    border-color 0.35s ease;
+}
+
+.luxury-button:hover {
+  transform: translateY(-1px) scale(1.02);
+  border-color: rgba(210, 105, 30, 0.78);
+  box-shadow: 0 0 28px rgba(210, 105, 30, 0.25);
+  letter-spacing: 0.16em;
+}
+
+.luxury-button:active {
+  transform: scale(0.98);
+}
+
+.ripple-btn {
+  isolation: isolate;
+}
+
+.ripple-wave {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(210, 105, 30, 0.42);
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple 650ms ease-out;
+  z-index: 0;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.floating-field {
+  position: relative;
+  display: block;
+}
+
+.floating-field input {
+  width: 100%;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(17, 17, 17, 0.85);
+  color: white;
+  padding: 1.05rem 1rem 0.52rem;
+  outline: none;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.floating-field input:focus {
+  border-color: rgba(210, 105, 30, 0.75);
+  box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+  transform: translateY(-1px);
+}
+
+.floating-field span {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.48);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  font-size: 0.86rem;
+}
+
+.floating-field input:focus + span,
+.floating-field input:not(:placeholder-shown) + span {
+  top: 0.62rem;
+  transform: translateY(0);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d2691e;
+}
+
+.property-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.property-card:hover {
+  border-color: rgba(210, 105, 30, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(210, 105, 30, 0.25),
+    0 18px 54px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(210, 105, 30, 0.14);
+}
+
+.cursor-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(210, 105, 30, 0.85);
+  background: rgba(210, 105, 30, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(210, 105, 30, 0.24),
+    0 0 24px rgba(210, 105, 30, 0.2);
+  pointer-events: none;
+  z-index: 40;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-glow__dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d2691e;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 0 2px rgba(210, 105, 30, 0.25),
+    0 0 12px rgba(210, 105, 30, 0.45);
+}
+
+@media (pointer: coarse) {
+  .cursor-glow {
+    display: none;
+  }
+}

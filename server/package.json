@@ -1,0 +1,32 @@
+{
+  "name": "real-estate-buyer-portal-server",
+  "version": "1.0.0",
+  "description": "Backend API for luxury real estate buyer portal",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "powershell -ExecutionPolicy Bypass -File scripts/devLocal.ps1",
+    "dev:server": "nodemon server.js",
+    "dev:local": "powershell -ExecutionPolicy Bypass -File scripts/devLocal.ps1",
+    "dev:local:ps": "powershell -ExecutionPolicy Bypass -File scripts/devLocal.ps1",
+    "start": "node server.js",
+    "seed": "node scripts/seedProperties.js",
+    "port:free": "powershell -ExecutionPolicy Bypass -File scripts/freePort.ps1 -Port 5000",
+    "db:local": "powershell -ExecutionPolicy Bypass -File scripts/mongoLocal.ps1",
+    "db:local:start": "powershell -ExecutionPolicy Bypass -File scripts/mongoLocalStart.ps1",
+    "db:local:stop": "powershell -ExecutionPolicy Bypass -File scripts/mongoLocalStop.ps1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
